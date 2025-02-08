@@ -32,6 +32,7 @@ def upload_image():
         return jsonify({"error": str(e)}), 500
 
 @app.route("/recommend", methods=["POST"])
+@app.route("/recommend", methods=["POST"])
 def recommend_books():
     try:
         data = request.get_json()
@@ -40,15 +41,22 @@ def recommend_books():
 
         if not user_preference:
             return jsonify({"error": "User preference is required"}), 400
-        print(titles)
-        print(user_preference)
+
+        print("📌 Titles Received:", titles)
+        print("📌 User Preference:", user_preference)
+
         recommendations = get_recommendations(titles, user_preference)
+
+        print("✅ Recommendations Generated:", recommendations)
+
         return jsonify({"recommendations": recommendations})
     
     except Exception as e:
-        print(f"Error: {e}")  # Log error internally
-        return jsonify({"error": "An unexpected error occurred"}), 500
+        import traceback
+        error_message = traceback.format_exc()
+        print(f"❌ ERROR: {error_message}")  # Print full error
 
+        return jsonify({"error": "An unexpected error occurred", "details": str(e)}), 500
 @app.route("/")
 def home():
     return jsonify({"message": "Bookshelf AI with Google Vision OCR is running!"})
