@@ -30,17 +30,17 @@ def get_recommendations(titles, user_preference):
         return recommendations
     
     except openai.error.InvalidRequestError as e:
-        print(f"❌ OpenAI Invalid Request Error: {e}")
+        print(f" OpenAI Invalid Request Error: {e}")
         return {"error": "Invalid request to OpenAI API"}
     
     except openai.error.AuthenticationError as e:
-        print(f"❌ OpenAI Authentication Error: {e}")
+        print(f"OpenAI Authentication Error: {e}")
         return {"error": "Invalid OpenAI API Key"}
 
     except openai.error.RateLimitError as e:
-        print(f"❌ OpenAI Rate Limit Exceeded: {e}")
+        print(f"OpenAI Rate Limit Exceeded: {e}")
         return {"error": "OpenAI rate limit exceeded. Please try again later."}
     
     except openai.error.OpenAIError as e:
-        print(f"❌ OpenAI API Error: {e}")
+        print(f" OpenAI API Error: {e}")
         return {"error": "An error occurred with OpenAI API"}

@@ -7,7 +7,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": ["https://yourfrontend.com", "http://localhost:3000"]}})  # Restrict to frontend domain
+CORS(app, resources={r"/*": {"origins": ["https://bookly-mokmfxxzd-1n4b0m9s-projects.vercel.app/", "http://localhost:3000"]}})  # Restrict to frontend domain
 limiter = Limiter(get_remote_address, app=app, default_limits=["50 per hour"])
 
 
@@ -15,7 +15,7 @@ UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route("/upload", methods=["POST"])
-@limiter.limit("10 per minute")  # 10 image uploads per minute per user
+@limiter.limit("10 per minute")  
 def upload_image():
     if "file" not in request.files:
         return jsonify({"error": "No file provided"}), 400
@@ -26,7 +26,6 @@ def upload_image():
 
     try:
         extracted_titles = extract_text_with_google_vision(image_path)
-        # Optionally, further processing can be done here to isolate actual book titles.
         return jsonify({"extracted_titles": extracted_titles})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -54,7 +53,7 @@ def recommend_books():
     except Exception as e:
         import traceback
         error_message = traceback.format_exc()
-        print(f"❌ ERROR: {error_message}")  # Print full error
+        print(f"❌ ERROR: {error_message}")  
 
         return jsonify({"error": "An unexpected error occurred", "details": str(e)}), 500
 @app.route("/")
