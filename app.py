@@ -12,8 +12,8 @@ allowed_origins = [
     "https://bookly-2fjjz2spj-1n4b0m9s-projects.vercel.app",
     "https://bookly-six.vercel.app",
     "https://bookly-1n4b0m9s-projects.vercel.app",
-    "bookly.photo",
-    "www.bookly.photo",
+    "https://bookly.photo",
+    "https://www.bookly.photo",
     "http://localhost:3000"  
 ]
 
