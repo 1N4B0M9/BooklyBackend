@@ -1,0 +1,6 @@
+Flask
+Flask-CORS
+Flask-Limiter
+gunicorn
+google-cloud-vision
+python-dotenv
