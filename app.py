@@ -7,7 +7,15 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": ["https://bookly-mokmfxxzd-1n4b0m9s-projects.vercel.app/", "http://localhost:3000"]}})  # Restrict to frontend domain
+allowed_origins = [
+    "https://bookly-git-main-1n4b0m9s-projects.vercel.app",
+    "https://bookly-2fjjz2spj-1n4b0m9s-projects.vercel.app",
+    "https://bookly-six.vercel.app",
+    "https://bookly-1n4b0m9s-projects.vercel.app",
+    "http://localhost:3000"  
+]
+
+CORS(app, origins=allowed_origins)
 limiter = Limiter(get_remote_address, app=app, default_limits=["50 per hour"])
 
 
