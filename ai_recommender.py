@@ -17,6 +17,7 @@ def get_recommendations(titles, user_preference):
         f"They are looking for a book that matches this preference: '{user_preference}'. "
         f"Select 3 books from their shelf that best match their reading preference. "
         f"Provide the recommendations in a structured format with the title, author, and a short reason why each book was selected."
+        f"Then, give a review of the book based on readers oponions with an average star rating out of 5 before the written review"
     )
 
     try:
