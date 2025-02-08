@@ -40,7 +40,8 @@ def recommend_books():
 
         if not user_preference:
             return jsonify({"error": "User preference is required"}), 400
-
+        print(titles)
+        print(user_preference)
         recommendations = get_recommendations(titles, user_preference)
         return jsonify({"recommendations": recommendations})
     
